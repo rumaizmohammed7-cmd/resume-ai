@@ -1,9 +1,10 @@
 import React from 'react';
+import GoogleStandardTemplate from '../templates/GoogleStandardTemplate';
 import ClassicTemplate from '../templates/ClassicTemplate';
 import ModernTemplate from '../templates/ModernTemplate';
 import ExecutiveTemplate from '../templates/ExecutiveTemplate';
 
-export default function ResumePreview({ data, template = "classic", isCompact = true }) {
+export default function ResumePreview({ data, template = "maang", isCompact = true }) {
   if (!data) {
     return (
       <div className="bg-white p-12 rounded-xl border border-slate-200 text-center text-slate-400">
@@ -14,6 +15,8 @@ export default function ResumePreview({ data, template = "classic", isCompact = 
 
   const renderTemplate = () => {
     switch (template) {
+      case 'maang':
+        return <GoogleStandardTemplate data={data} isCompact={isCompact} />;
       case 'modern':
         return <ModernTemplate data={data} isCompact={isCompact} />;
       case 'executive':

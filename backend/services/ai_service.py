@@ -12,7 +12,7 @@ def generate_professional_summary(user_profile: Dict[str, Any]) -> str:
     """
     personal = user_profile.get("personalInfo", {})
     name = personal.get("fullName", "")
-    title = personal.get("title", "") or "Professional"
+    title = personal.get("title", "") or "Software Professional"
     exp_level = user_profile.get("experienceLevel", "0–2 Years Experience")
     
     # Extract user skills
@@ -25,7 +25,7 @@ def generate_professional_summary(user_profile: Dict[str, Any]) -> str:
     elif isinstance(skills_data, list):
         all_skills.extend(skills_data)
         
-    skills_str = ", ".join(all_skills[:5]) if all_skills else "relevant core competencies"
+    skills_str = ", ".join(all_skills[:5]) if all_skills else "software engineering & system design"
     
     # Extract latest education or company
     education = user_profile.get("education", [])
@@ -36,44 +36,46 @@ def generate_professional_summary(user_profile: Dict[str, Any]) -> str:
     
     if "Student" in exp_level or "Fresher" in exp_level:
         if edu_degree:
-            summary = f"Motivated {title} candidate pursuing/holding a {edu_degree}. Equipped with solid hands-on knowledge in {skills_str}. Eager to leverage technical capabilities, academic training, and collaborative problem-solving to deliver high-quality solutions."
+            summary = f"High-performing {title} candidate holding/pursuing {edu_degree}. Solid technical proficiency in {skills_str}. Dedicated to applying computer science fundamentals, modular architecture, and collaborative problem solving to deliver scalable software solutions."
         else:
-            summary = f"Results-driven aspiring {title} with foundational expertise in {skills_str}. Dedicated to applying modern software engineering principles and contributing to impactful team projects."
+            summary = f"Aspiring {title} with strong technical foundations in {skills_str}. Experienced in developing end-to-end software projects, writing maintainable code, and optimizing application performance."
     elif "5+" in exp_level:
-        summary = f"Accomplished and strategic {title} with extensive industry experience leading cross-functional teams and delivering scalable software solutions. Proven track record in architectural design, process optimization, and technical execution utilizing {skills_str}."
+        summary = f"Senior {title} with extensive industry experience architecting scalable systems and leading technical initiatives. Proven track record in system design, performance optimization, and cross-functional team leadership utilizing {skills_str}."
     elif "2–5" in exp_level or "2-5" in exp_level:
-        summary = f"Results-oriented {title} with a solid background developing and maintaining robust web and software applications. Skilled in {skills_str}, with a strong commitment to clean code architecture and team collaboration."
+        summary = f"Results-driven {title} with hands-on experience engineering high-availability web applications and backend microservices. Skilled in {skills_str}, clean code patterns, and agile engineering workflows."
     else: # 0-2 years
         if latest_company:
-            summary = f"Detail-oriented {title} with practical experience at {latest_company}. Proficient in {skills_str}, focused on building scalable, user-centric applications and continuously learning modern technologies."
+            summary = f"Software Engineer with professional experience at {latest_company}. Proficient in {skills_str}, with a strong commitment to robust software design, automated testing, and continuous deployment."
         else:
-            summary = f"Enthusiastic {title} with early-career experience developing software applications and web solutions using {skills_str}. Strong foundation in software design, version control, and team development."
+            summary = f"Detail-oriented {title} with early-career experience developing modern web and backend applications using {skills_str}. Focused on building high-quality, user-centric software features."
 
     return summary
 
 def improve_bullet_point(bullet: str, job_title: str = "") -> str:
     """
-    Enhance work experience bullet point wording using active verbs and standard ATS clarity,
-    without inventing fake numbers, metrics, or technologies.
+    Enhance experience/project bullet points into MAANG-style high-impact statements
+    following the Google XYZ formula (Accomplished X measured by Y by doing Z)
+    without fabricating fake company names or numbers.
     """
     clean_bullet = bullet.strip().rstrip('.')
     if not clean_bullet:
         return ""
         
-    # Check if already starts with strong action verb
     first_word = clean_bullet.split()[0].lower()
     
+    # MAANG Power Action Verb Replacement
     verbs_map = {
-        "worked": "Developed and maintained",
-        "built": "Engineered and implemented",
-        "made": "Designed and deployed",
-        "did": "Executed key tasks including",
-        "helped": "Collaborated with team members to deliver",
-        "handled": "Managed operational workflows for",
-        "created": "Architected and implemented",
-        "used": "Leveraged",
-        "tested": "Validated software quality by performing",
-        "fixed": "Resolved technical issues and refactored"
+        "worked": "Spearheaded development and maintenance of",
+        "built": "Architected and implemented",
+        "made": "Designed and deployed scalable",
+        "did": "Engineered core modules for",
+        "helped": "Collaborated across engineering teams to deliver",
+        "handled": "Managed end-to-end operational workflows for",
+        "created": "Engineered and delivered high-performance",
+        "used": "Leveraged modern industry frameworks including",
+        "tested": "Rigorously validated software quality by executing",
+        "fixed": "Diagnosed, refactored, and resolved critical issues in",
+        "added": "Integrated key functionality for"
     }
     
     for weak_verb, strong_verb in verbs_map.items():
@@ -81,15 +83,15 @@ def improve_bullet_point(bullet: str, job_title: str = "") -> str:
             rest = clean_bullet[len(weak_verb):].strip()
             return f"{strong_verb} {rest}."
             
-    # Default polish: capitalize first letter and add period
+    # Capitalize first letter and add period
     enhanced = clean_bullet[0].upper() + clean_bullet[1:] + "."
     return enhanced
 
 def improve_project_description(description: str, technologies: List[str] = None) -> str:
-    """Refine project description for maximum clarity and technical precision."""
+    """Refine project description into clear MAANG-standard technical overview."""
     if not description:
         return ""
-    tech_text = f" Built using {', '.join(technologies)}." if technologies else ""
+    tech_text = f" Engineered using {', '.join(technologies)}." if technologies else ""
     clean_desc = description.strip().rstrip('.')
     return f"{clean_desc[0].upper()}{clean_desc[1:]}.{tech_text}"
 
