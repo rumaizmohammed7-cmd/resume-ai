@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, FileText } from 'lucide-react';
+import { FileText } from 'lucide-react';
 
 export default function Navbar({ onNavigate, currentPage }) {
   return (
@@ -10,9 +10,11 @@ export default function Navbar({ onNavigate, currentPage }) {
           onClick={() => onNavigate('landing')}
           className="flex items-center space-x-2.5 cursor-pointer group"
         >
-          <div className="w-9 h-9 rounded-lg bg-brand-600 flex items-center justify-center text-white font-bold shadow-md shadow-brand-500/20 group-hover:bg-brand-700 transition">
-            <Sparkles className="w-5 h-5" />
-          </div>
+          <img 
+            src="/logo.png" 
+            alt="ResumeAI Logo" 
+            className="w-9 h-9 rounded-lg shadow-md shadow-brand-500/20 group-hover:scale-105 transition object-cover border border-slate-800"
+          />
           <span className="text-xl font-extrabold tracking-tight text-slate-900">
             Resume<span className="text-brand-600">AI</span>
           </span>
