@@ -2,9 +2,11 @@
 
 **ResumeAI** is a modern, polished, professional AI-powered ATS Resume Builder web application built for students, freshers, and experienced professionals.
 
+[![Live Web App](https://img.shields.io/badge/Live%20Demo-resume--ai--ten--sandy.vercel.app-blue?style=for-the-badge&logo=vercel)](https://resume-ai-ten-sandy.vercel.app)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-rumaizmohammed7--cmd%2Fresume--ai-blue?style=flat-square&logo=github)](https://github.com/rumaizmohammed7-cmd/resume-ai)
 [![ATS Friendly](https://img.shields.io/badge/ATS-100%25%20Compliant-emerald?style=flat-square)](https://github.com/rumaizmohammed7-cmd/resume-ai)
-[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+
+👉 **Live Web App**: [https://resume-ai-ten-sandy.vercel.app](https://resume-ai-ten-sandy.vercel.app)
 
 ---
 
