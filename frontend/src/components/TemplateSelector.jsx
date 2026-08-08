@@ -1,11 +1,11 @@
 import React from 'react';
-import { Layout, Check, Award } from 'lucide-react';
+import { Layout, Check, ShieldCheck } from 'lucide-react';
 
 const TEMPLATES = [
-  { id: "maang", name: "MAANG Standard", desc: "Ultra-clean Google/Meta single-column ATS format." },
-  { id: "classic", name: "Classic ATS", desc: "Traditional professional ATS format with clean layout." },
-  { id: "modern", name: "Modern Tech", desc: "Minimal modern design with blue accent headers." },
-  { id: "executive", name: "Executive", desc: "Tailored for senior professionals and managers." }
+  { id: "maang", name: "ATS Professional (One-Column)", desc: "Reverse-chronological single-column layout easy for ATS software to read." },
+  { id: "classic", name: "Classic ATS", desc: "Traditional clean ATS format with balanced typography." },
+  { id: "modern", name: "Modern Tech", desc: "Minimal modern design with crisp blue accent headers." },
+  { id: "executive", name: "Executive", desc: "Tailored for senior professionals and management roles." }
 ];
 
 export default function TemplateSelector({ selectedTemplate = "maang", onSelect }) {
@@ -16,13 +16,13 @@ export default function TemplateSelector({ selectedTemplate = "maang", onSelect 
           <Layout className="w-4 h-4 text-brand-600" />
           Choose ATS Resume Template
         </div>
-        <span className="text-[11px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 flex items-center gap-1">
-          <Award className="w-3 h-3 text-amber-600" />
-          MAANG Approved
+        <span className="text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 flex items-center gap-1">
+          <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+          100% ATS Scannable
         </span>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {TEMPLATES.map((t) => {
           const isSelected = selectedTemplate === t.id;
           return (
@@ -39,7 +39,7 @@ export default function TemplateSelector({ selectedTemplate = "maang", onSelect 
               <div>
                 <div className="flex justify-between items-center mb-1">
                   <span className={`text-xs font-bold ${isSelected ? 'text-brand-700' : 'text-slate-900'}`}>{t.name}</span>
-                  {isSelected && <Check className="w-3.5 h-3.5 text-brand-600" />}
+                  {isSelected && <Check className="w-3.5 h-3.5 text-brand-600 shrink-0 ml-1" />}
                 </div>
                 <p className="text-[11px] text-slate-500 leading-tight">{t.desc}</p>
               </div>
